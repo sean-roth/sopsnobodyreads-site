@@ -114,24 +114,19 @@ section { padding: 6rem 0; }
   border-top: 1px solid rgba(255,255,255,0.06);
   background: linear-gradient(180deg, transparent 0%, rgba(240,180,41,0.02) 100%);
 }
-.demo-frame {
-  margin-top: 2.5rem; border: 1px solid rgba(240,180,41,0.2); overflow: hidden;
+.demo-card {
+  margin-top: 2.5rem;
+  padding: 3rem 2rem;
+  border: 1px solid rgba(240,180,41,0.2);
+  background: rgba(240,180,41,0.02);
+  text-align: center;
 }
-.demo-bar {
-  display: flex; align-items: center; justify-content: space-between;
-  padding: 0.75rem 1.25rem; background: var(--gray-800);
-  border-bottom: 1px solid rgba(255,255,255,0.06);
-  font-family: var(--font-mono); font-size: 0.75rem; color: var(--gray-400);
+.demo-card h3 {
+  font-size: 1.4rem; font-weight: 600; margin-bottom: 0.5rem;
 }
-.demo-bar-dots { display: flex; gap: 6px; }
-.demo-bar-dot { width: 10px; height: 10px; border-radius: 50%; background: rgba(255,255,255,0.1); }
-.demo-bar-dot:first-child { background: var(--warning-red); }
-.demo-content {
-  display: flex; flex-direction: column; align-items: center; justify-content: center;
-  padding: 4rem 2rem; background: rgba(255,255,255,0.01); text-align: center;
+.demo-card .demo-sub {
+  color: var(--gray-400); font-size: 0.95rem; margin-bottom: 2rem;
 }
-.demo-content h3 { font-size: 1.4rem; font-weight: 600; margin-bottom: 0.5rem; }
-.demo-content p { color: var(--gray-400); margin-bottom: 2rem; font-size: 0.95rem; }
 .demo-badge {
   font-family: var(--font-mono); font-size: 0.7rem; color: var(--safety-yellow);
   letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 1rem;
@@ -144,8 +139,10 @@ section { padding: 6rem 0; }
 }
 .demo-link:hover { background: var(--safety-yellow); color: var(--black); }
 .demo-closer {
-  margin-top: 2.5rem; font-size: 1.05rem; color: var(--gray-200);
-  line-height: 1.5; max-width: 600px;
+  margin-top: 2rem; padding-top: 2rem;
+  border-top: 1px solid rgba(240,180,41,0.1);
+  font-size: 0.95rem; color: var(--gray-400);
+  line-height: 1.5;
 }
 .how { border-top: 1px solid rgba(255,255,255,0.06); }
 .how-steps { margin-top: 3rem; display: grid; gap: 0; }
@@ -263,26 +260,16 @@ footer {
     <div class="container">
       <div class="section-label">See the difference</div>
       <h2 class="section-title">This is what a 24-page OSHA SOP looks like when someone actually has to learn it.</h2>
-      <div class="demo-frame">
-        <div class="demo-bar">
-          <div class="demo-bar-dots">
-            <div class="demo-bar-dot"></div>
-            <div class="demo-bar-dot"></div>
-            <div class="demo-bar-dot"></div>
-          </div>
-          <span>LOTO: Control of Hazardous Energy</span>
-        </div>
-        <div class="demo-content">
-          <div class="demo-badge">Live demo</div>
-          <h3>Lockout/Tagout: Control of Hazardous Energy</h3>
-          <p>Three modules. Comprehension checks. Built in a weekend.</p>
-          <a href="https://sean-roth.github.io/sops-nobody-reads/courses/loto/builds/index.html" target="_blank" rel="noopener" class="demo-link">
-            Click through the course
-            <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 3h8v8M13 3L3 13"/></svg>
-          </a>
-        </div>
+      <div class="demo-card">
+        <div class="demo-badge">Live demo</div>
+        <h3>Lockout/Tagout: Control of Hazardous Energy</h3>
+        <p class="demo-sub">Three modules. Comprehension checks. Built in a weekend.</p>
+        <a href="https://sean-roth.github.io/sops-nobody-reads/courses/loto/builds/index.html" target="_blank" rel="noopener" class="demo-link">
+          Click through the course
+          <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 3h8v8M13 3L3 13"/></svg>
+        </a>
+        <p class="demo-closer">This is a generic OSHA course. Yours gets built from your SOPs, your chemicals, your equipment, your facility. Same process. Same speed.</p>
       </div>
-      <p class="demo-closer">This is a generic OSHA course. Yours gets built from your SOPs, your chemicals, your equipment, your facility. Same process. Same speed.</p>
     </div>
   </section>
 

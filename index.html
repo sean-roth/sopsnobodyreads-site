@@ -44,7 +44,6 @@ body::before {
 a { color: var(--safety-yellow); text-decoration: none; }
 a:hover { color: var(--safety-yellow-dim); }
 .container { max-width: 1080px; margin: 0 auto; padding: 0 2rem; }
-
 nav {
   position: fixed; top: 0; left: 0; right: 0; z-index: 100;
   padding: 1.25rem 2rem;
@@ -63,7 +62,6 @@ nav {
   color: var(--safety-yellow); transition: all 0.2s ease;
 }
 .nav-cta:hover { background: var(--safety-yellow); color: var(--black); }
-
 .hero {
   min-height: 100vh; display: flex; flex-direction: column;
   justify-content: center; padding: 8rem 0 6rem;
@@ -92,7 +90,6 @@ nav {
 }
 .hero-cta:hover { background: var(--safety-yellow-dim); color: var(--black); transform: translateY(-1px); }
 .hero-cta svg { width: 16px; height: 16px; }
-
 section { padding: 6rem 0; }
 .section-label {
   font-family: var(--font-mono); font-size: 0.75rem; color: var(--safety-yellow);
@@ -102,7 +99,6 @@ section { padding: 6rem 0; }
   font-size: clamp(1.8rem, 4vw, 2.8rem); font-weight: 700; line-height: 1.15;
   letter-spacing: -0.02em; margin-bottom: 1.5rem; max-width: 700px;
 }
-
 .problem { border-top: 1px solid rgba(255,255,255,0.06); }
 .problem-grid {
   display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -114,7 +110,6 @@ section { padding: 6rem 0; }
 }
 .problem-card h3 { font-size: 1.1rem; font-weight: 600; margin-bottom: 0.75rem; }
 .problem-card p { font-size: 0.95rem; color: var(--gray-400); line-height: 1.5; }
-
 .demo {
   border-top: 1px solid rgba(255,255,255,0.06);
   background: linear-gradient(180deg, transparent 0%, rgba(240,180,41,0.02) 100%);
@@ -149,7 +144,6 @@ section { padding: 6rem 0; }
 }
 .demo-link:hover { background: var(--safety-yellow); color: var(--black); }
 .demo-note { margin-top: 2rem; font-size: 0.85rem; color: var(--gray-600); font-style: italic; }
-
 .how { border-top: 1px solid rgba(255,255,255,0.06); }
 .how-steps { margin-top: 3rem; display: grid; gap: 0; }
 .how-step {
@@ -163,7 +157,6 @@ section { padding: 6rem 0; }
 }
 .step-content h3 { font-size: 1.15rem; font-weight: 600; margin-bottom: 0.5rem; }
 .step-content p { font-size: 0.95rem; color: var(--gray-400); line-height: 1.5; max-width: 600px; }
-
 .verified { border-top: 1px solid rgba(255,255,255,0.06); }
 .verified-box {
   margin-top: 2.5rem; padding: 2.5rem;
@@ -176,7 +169,6 @@ section { padding: 6rem 0; }
   color: var(--gray-600); word-break: break-all; padding: 1rem;
   background: rgba(0,0,0,0.3); border: 1px solid rgba(255,255,255,0.04);
 }
-
 .cta-section {
   padding: 8rem 0; text-align: center;
   border-top: 1px solid rgba(255,255,255,0.06);
@@ -199,7 +191,6 @@ section { padding: 6rem 0; }
   transition: all 0.2s ease;
 }
 .cta-secondary:hover { border-color: var(--white); color: var(--white); }
-
 footer {
   padding: 3rem 0; border-top: 1px solid rgba(255,255,255,0.04);
   display: flex; justify-content: space-between; align-items: center;
@@ -208,12 +199,10 @@ footer {
 .footer-brand { font-family: var(--font-mono); font-size: 0.8rem; color: var(--gray-600); }
 .footer-contact { font-family: var(--font-mono); font-size: 0.8rem; color: var(--gray-600); }
 .footer-contact a { color: var(--gray-400); }
-
 @keyframes fadeUp {
   from { opacity: 0; transform: translateY(20px); }
   to { opacity: 1; transform: translateY(0); }
 }
-
 @media (max-width: 768px) {
   nav { padding: 1rem 1.25rem; }
   .container { padding: 0 1.25rem; }
@@ -230,7 +219,7 @@ footer {
 
 <nav>
   <div class="nav-logo">SOPs Nobody Reads</div>
-  <a href="#book" class="nav-cta">Get in touch</a>
+  <a href="https://calendly.com/contact-sopsnobodyreads/15min" target="_blank" rel="noopener" class="nav-cta">Get in touch</a>
 </nav>
 
 <main>
@@ -239,7 +228,7 @@ footer {
       <div class="hero-label">Compliance training for people who work for a living</div>
       <h1>Your SOPs don't work.<br><em>We fix that.</em></h1>
       <p class="hero-sub">We turn your compliance procedures into training your team actually completes, with a verified audit trail that holds up when the inspector walks in.</p>
-      <a href="https://calendly.com/contact-sopsnobodyreads/30min" target="_blank" rel="noopener" class="hero-cta">
+      <a href="https://calendly.com/contact-sopsnobodyreads/15min" target="_blank" rel="noopener" class="hero-cta">
         Schedule a discovery call
         <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
       </a>
@@ -342,7 +331,7 @@ footer {
       <h2>Your people deserve better<br>than a binder.</h2>
       <p>Let's talk about what your training system should look like.</p>
       <div class="cta-buttons">
-        <a href="https://calendly.com/contact-sopsnobodyreads/30min" target="_blank" rel="noopener" class="cta-primary">Book a discovery call</a>
+        <a href="https://calendly.com/contact-sopsnobodyreads/15min" target="_blank" rel="noopener" class="cta-primary">Book a discovery call</a>
         <a href="#demo" class="cta-secondary">See the demo first</a>
       </div>
     </div>

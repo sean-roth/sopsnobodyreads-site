@@ -1,7 +1,14 @@
 {
-  "rewrites": [
+  "redirects": [
     {
       "source": "/demo",
+      "destination": "/demo/",
+      "statusCode": 308
+    }
+  ],
+  "rewrites": [
+    {
+      "source": "/demo/",
       "destination": "https://sean-roth.github.io/sops-nobody-reads/courses/loto/builds/index.html"
     },
     {

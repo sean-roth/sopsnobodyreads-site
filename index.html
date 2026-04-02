@@ -110,26 +110,114 @@ section { padding: 6rem 0; }
 }
 .problem-card h3 { font-size: 1.1rem; font-weight: 600; margin-bottom: 0.75rem; }
 .problem-card p { font-size: 0.95rem; color: var(--gray-400); line-height: 1.5; }
+
+/* Demo / Before-After Section */
 .demo {
   border-top: 1px solid rgba(255,255,255,0.06);
   background: linear-gradient(180deg, transparent 0%, rgba(240,180,41,0.02) 100%);
 }
-.demo-card {
-  margin-top: 2.5rem;
-  padding: 3rem 2rem;
-  border: 1px solid rgba(240,180,41,0.2);
-  background: rgba(240,180,41,0.02);
+.before-after {
+  margin-top: 3rem;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  gap: 2rem;
+  align-items: center;
+}
+.before-side {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+.before-side .ba-label {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--warning-red);
+}
+.before-side .ba-img-wrap {
+  position: relative;
+  transform: rotate(-2deg);
+  opacity: 0.6;
+  transition: opacity 0.3s ease;
+  max-width: 280px;
+}
+.before-side .ba-img-wrap:hover {
+  opacity: 0.85;
+}
+.before-side .ba-img-wrap img {
+  width: 100%;
+  display: block;
+  border: 1px solid rgba(255,255,255,0.08);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.5);
+}
+.ba-arrow {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--safety-yellow);
+}
+.ba-arrow svg {
+  width: 40px;
+  height: 40px;
+}
+.ba-arrow span {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--gray-600);
+  writing-mode: horizontal-tb;
+}
+.after-side {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+.after-side .ba-label {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--safety-yellow);
+}
+.after-side .ba-img-wrap {
+  position: relative;
+  transform: rotate(1deg);
+  max-width: 520px;
+  width: 100%;
+}
+.after-side .ba-img-wrap::after {
+  content: '';
+  position: absolute;
+  inset: -1px;
+  border: 1px solid rgba(240, 180, 41, 0.25);
+  pointer-events: none;
+  box-shadow:
+    0 0 40px rgba(240, 180, 41, 0.08),
+    0 12px 48px rgba(0,0,0,0.6);
+}
+.after-side .ba-img-wrap img {
+  width: 100%;
+  display: block;
+}
+
+.demo-cta-area {
+  margin-top: 3rem;
   text-align: center;
-}
-.demo-card h3 {
-  font-size: 1.4rem; font-weight: 600; margin-bottom: 0.5rem;
-}
-.demo-card .demo-sub {
-  color: var(--gray-400); font-size: 0.95rem; margin-bottom: 2rem;
 }
 .demo-badge {
   font-family: var(--font-mono); font-size: 0.7rem; color: var(--safety-yellow);
-  letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 1rem;
+  letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 0.75rem;
+}
+.demo-cta-area h3 {
+  font-size: 1.2rem; font-weight: 600; margin-bottom: 0.5rem;
+}
+.demo-cta-area .demo-sub {
+  color: var(--gray-400); font-size: 0.95rem; margin-bottom: 1.5rem;
 }
 .demo-link {
   display: inline-flex; align-items: center; gap: 0.5rem;
@@ -139,11 +227,35 @@ section { padding: 6rem 0; }
 }
 .demo-link:hover { background: var(--safety-yellow); color: var(--black); }
 .demo-closer {
-  margin-top: 2rem; padding-top: 2rem;
-  border-top: 1px solid rgba(240,180,41,0.1);
+  margin-top: 2rem;
   font-size: 0.95rem; color: var(--gray-400);
-  line-height: 1.5;
+  line-height: 1.5; max-width: 600px; margin-left: auto; margin-right: auto;
 }
+
+/* Mobile before/after */
+@media (max-width: 768px) {
+  .before-after {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  .ba-arrow {
+    flex-direction: row;
+    gap: 0.75rem;
+  }
+  .ba-arrow svg {
+    width: 28px; height: 28px;
+    transform: rotate(90deg);
+  }
+  .before-side .ba-img-wrap {
+    transform: rotate(0);
+    max-width: 220px;
+  }
+  .after-side .ba-img-wrap {
+    transform: rotate(0);
+    max-width: 100%;
+  }
+}
+
 .how { border-top: 1px solid rgba(255,255,255,0.06); }
 .how-steps { margin-top: 3rem; display: grid; gap: 0; }
 .how-step {
@@ -260,7 +372,30 @@ footer {
     <div class="container">
       <div class="section-label">See the difference</div>
       <h2 class="section-title">This is what a 24-page OSHA SOP looks like when someone actually has to learn it.</h2>
-      <div class="demo-card">
+
+      <div class="before-after">
+        <div class="before-side">
+          <div class="ba-label">What they get now</div>
+          <div class="ba-img-wrap">
+            <img src="images/before-osha-sop.png" alt="A typical OSHA Lockout/Tagout written program — dense, government-formatted, unread" loading="lazy">
+          </div>
+        </div>
+
+        <div class="ba-arrow">
+          <svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M8 20h24M24 12l8 8-8 8"/>
+          </svg>
+        </div>
+
+        <div class="after-side">
+          <div class="ba-label">What they experience with us</div>
+          <div class="ba-img-wrap">
+            <img src="images/after-loto-player.png" alt="The same LOTO content as an interactive training module — cinematic, engaging, built to teach" loading="lazy">
+          </div>
+        </div>
+      </div>
+
+      <div class="demo-cta-area">
         <div class="demo-badge">Live demo</div>
         <h3>Lockout/Tagout: Control of Hazardous Energy</h3>
         <p class="demo-sub">Three modules. Comprehension checks. Built in a weekend.</p>

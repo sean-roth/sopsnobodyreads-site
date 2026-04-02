@@ -1,0 +1,12 @@
+{
+  "rewrites": [
+    {
+      "source": "/demo",
+      "destination": "https://sean-roth.github.io/sops-nobody-reads/courses/loto/builds/index.html"
+    },
+    {
+      "source": "/demo/:path*",
+      "destination": "https://sean-roth.github.io/sops-nobody-reads/courses/loto/builds/:path*"
+    }
+  ]
+}

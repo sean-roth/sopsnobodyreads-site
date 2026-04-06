@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<title>SOPs Nobody Reads</title>
+<style>
+:root {
+  --bg: #0a0a0a;
+  --yellow: #f0b429;
+  --yellow-dim: #d49b1f;
+  --red: #c53030;
+  --white: #f5f4f0;
+  --gray-200: #d4d3cf;
+  --gray-400: #8a8985;
+  --gray-600: #5a5955;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { height: 100%; overflow: hidden; background: var(--bg); color: var(--white); }
+body { font-family: -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif; -webkit-font-smoothing: antialiased; }
+.deck { position: relative; width: 100%; height: 100%; }
+.slide {
+  position: absolute; inset: 0;
+  display: flex; flex-direction: column; justify-content: center; align-items: center;
+  padding: 5vh 6vw;
+  opacity: 0; visibility: hidden;
+  transition: opacity 0.5s ease, transform 0.5s ease;
+  transform: translateX(40px);
+}
+.slide.active { opacity: 1; visibility: visible; transform: translateX(0); }
+.slide.exiting { opacity: 0; visibility: visible; transform: translateX(-40px); }
+.s1-brand { font-family: 'Courier New', monospace; font-size: clamp(1rem, 2.5vw, 1.4rem); color: var(--yellow); letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 6vh; }
+.s1-question { font-size: clamp(2.2rem, 5.5vw, 4rem); font-weight: 700; line-height: 1.12; text-align: center; letter-spacing: -0.02em; max-width: 800px; }
+.s1-question em { font-style: normal; color: var(--yellow); }
+.s1-sub { margin-top: 4vh; font-size: clamp(1rem, 2vw, 1.3rem); color: var(--gray-400); text-align: center; max-width: 500px; line-height: 1.5; }
+.s2-title { font-family: 'Courier New', monospace; font-size: clamp(0.7rem, 1.2vw, 0.85rem); color: var(--yellow); letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 4vh; }
+.ba-row { display: flex; align-items: center; gap: 3vw; width: 100%; max-width: 900px; justify-content: center; }
+.ba-col { display: flex; flex-direction: column; align-items: center; gap: 1.5vh; }
+.ba-label { font-family: 'Courier New', monospace; font-size: 0.7rem; letter-spacing: 0.1em; text-transform: uppercase; }
+.ba-label.before { color: var(--red); }
+.ba-label.after { color: var(--yellow); }
+.ba-img-before { max-height: 52vh; max-width: 28vw; opacity: 0.55; transform: rotate(-2deg); border: 1px solid rgba(255,255,255,0.08); box-shadow: 0 8px 32px rgba(0,0,0,0.5); }
+.ba-img-after { max-height: 52vh; max-width: 50vw; transform: rotate(1deg); border: 1px solid rgba(240,180,41,0.25); box-shadow: 0 0 40px rgba(240,180,41,0.08), 0 12px 48px rgba(0,0,0,0.6); }
+.ba-arrow { color: var(--yellow); font-size: 2.5rem; font-weight: 300; opacity: 0.6; }
+.s3-heading { font-size: clamp(1.8rem, 4vw, 2.8rem); font-weight: 700; text-align: center; margin-bottom: 5vh; letter-spacing: -0.02em; max-width: 700px; }
+.diff-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 2.5vw; max-width: 860px; width: 100%; }
+.diff-card { padding: 3vh 2vw; border-left: 2px solid var(--yellow); background: rgba(255,255,255,0.02); }
+.diff-card h3 { font-family: 'Courier New', monospace; font-size: clamp(0.75rem, 1.1vw, 0.9rem); color: var(--yellow); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 1.5vh; }
+.diff-card p { font-size: clamp(0.85rem, 1.3vw, 1rem); color: var(--gray-400); line-height: 1.5; }
+.s4-heading { font-size: clamp(1.8rem, 4vw, 2.8rem); font-weight: 700; text-align: center; margin-bottom: 5vh; letter-spacing: -0.02em; }
+.process-row { display: flex; gap: 2vw; max-width: 860px; width: 100%; align-items: flex-start; }
+.process-step { flex: 1; padding: 3vh 2vw; border-top: 2px solid rgba(240,180,41,0.2); }
+.process-step.active-step { border-top-color: var(--yellow); }
+.step-num { font-family: 'Courier New', monospace; font-size: 2rem; font-weight: 700; color: rgba(240,180,41,0.15); margin-bottom: 1vh; }
+.process-step.active-step .step-num { color: rgba(240,180,41,0.4); }
+.process-step h3 { font-size: clamp(1rem, 1.5vw, 1.2rem); font-weight: 600; margin-bottom: 1vh; }
+.process-step p { font-size: clamp(0.85rem, 1.2vw, 0.95rem); color: var(--gray-400); line-height: 1.5; }
+.process-step .price { margin-top: 1.5vh; font-family: 'Courier New', monospace; font-size: 0.8rem; color: var(--yellow); }
+.s5-heading { font-size: clamp(2rem, 5vw, 3.2rem); font-weight: 700; text-align: center; margin-bottom: 2vh; letter-spacing: -0.02em; }
+.s5-sub { font-size: clamp(1rem, 1.8vw, 1.2rem); color: var(--gray-400); text-align: center; margin-bottom: 5vh; line-height: 1.5; }
+.cta-row { display: flex; gap: 1.5rem; flex-wrap: wrap; justify-content: center; }
+.cta-btn { display: inline-flex; align-items: center; gap: 0.5rem; font-family: 'Courier New', monospace; font-size: 0.9rem; font-weight: 600; padding: 1.2rem 2.5rem; text-decoration: none; transition: all 0.2s ease; cursor: pointer; }
+.cta-btn.primary { background: var(--yellow); color: var(--bg); border: none; }
+.cta-btn.primary:hover { background: var(--yellow-dim); transform: translateY(-2px); }
+.cta-btn.secondary { background: transparent; color: var(--yellow); border: 1px solid var(--yellow); }
+.cta-btn.secondary:hover { background: var(--yellow); color: var(--bg); }
+.s5-site { margin-top: 5vh; font-family: 'Courier New', monospace; font-size: 0.8rem; color: var(--gray-600); }
+.nav-dots { position: fixed; bottom: 3vh; left: 50%; transform: translateX(-50%); display: flex; gap: 12px; z-index: 100; }
+.dot { width: 10px; height: 10px; border-radius: 50%; background: rgba(255,255,255,0.15); border: none; cursor: pointer; transition: all 0.3s ease; -webkit-tap-highlight-color: transparent; }
+.dot.active { background: var(--yellow); transform: scale(1.2); }
+.tap-left, .tap-right { position: fixed; top: 0; width: 25%; height: 100%; z-index: 50; cursor: pointer; -webkit-tap-highlight-color: transparent; }
+.tap-left { left: 0; }
+.tap-right { right: 0; }
+.offline-badge { position: fixed; top: 2vh; right: 3vw; z-index: 100; font-family: 'Courier New', monospace; font-size: 0.65rem; letter-spacing: 0.08em; text-transform: uppercase; padding: 0.4rem 0.8rem; border-radius: 3px; display: none; }
+.offline-badge.online { display: block; background: rgba(72,187,120,0.15); color: #48bb78; }
+.offline-badge.offline { display: block; background: rgba(197,48,48,0.15); color: #c53030; }
+@media (max-width: 768px) {
+  .ba-row { flex-direction: column; gap: 2vh; }
+  .ba-img-before { max-width: 50vw; max-height: 30vh; }
+  .ba-img-after { max-width: 85vw; max-height: 35vh; }
+  .ba-arrow { transform: rotate(90deg); }
+  .diff-grid { grid-template-columns: 1fr; gap: 2vh; }
+  .process-row { flex-direction: column; gap: 2vh; }
+}
+</style>
+</head>
+<body>
+<div class="deck">
+  <div class="slide active" data-slide="0">
+    <div class="s1-brand">SOPs Nobody Reads</div>
+    <h1 class="s1-question">Your SOPs exist.<br><em>Can you prove anyone learned them?</em></h1>
+    <p class="s1-sub">We turn compliance procedures into training your team actually completes &mdash; with a verified audit trail.</p>
+  </div>
+  <div class="slide" data-slide="1">
+    <div class="s2-title">See the difference</div>
+    <div class="ba-row">
+      <div class="ba-col">
+        <div class="ba-label before">What they get now</div>
+        <img class="ba-img-before" src="/images/before-osha-sop.png" alt="OSHA SOP document">
+      </div>
+      <div class="ba-arrow">&rarr;</div>
+      <div class="ba-col">
+        <div class="ba-label after">What they experience with us</div>
+        <img class="ba-img-after" src="/images/after-loto-player.png" alt="Interactive LOTO training module">
+      </div>
+    </div>
+  </div>
+  <div class="slide" data-slide="2">
+    <h2 class="s3-heading">Not an LMS. Not a consultant with a binder. Something new.</h2>
+    <div class="diff-grid">
+      <div class="diff-card">
+        <h3>Your SOPs, not ours</h3>
+        <p>Every module is built from your actual procedures, your chemicals, your equipment. Nothing generic.</p>
+      </div>
+      <div class="diff-card">
+        <h3>Proves comprehension</h3>
+        <p>Quizzes that verify understanding, not just attendance. Workers sign off with a PIN after passing.</p>
+      </div>
+      <div class="diff-card">
+        <h3>Audit-ready records</h3>
+        <p>Every completion is cryptographically timestamped. When the inspector asks, you hand them proof &mdash; not a binder.</p>
+      </div>
+    </div>
+  </div>
+  <div class="slide" data-slide="3">
+    <h2 class="s4-heading">From binder to verified training.</h2>
+    <div class="process-row">
+      <div class="process-step active-step">
+        <div class="step-num">01</div>
+        <h3>Assessment</h3>
+        <p>We review your SOPs, map them against regulatory requirements, and build a sample module from one of your actual procedures.</p>
+        <div class="price">$3,500 &mdash; includes a working module</div>
+      </div>
+      <div class="process-step">
+        <div class="step-num">02</div>
+        <h3>Module production</h3>
+        <p>Each SOP becomes a narrative training module with comprehension checks. Built in days, not months.</p>
+      </div>
+      <div class="process-step">
+        <div class="step-num">03</div>
+        <h3>Verified delivery</h3>
+        <p>Your team takes the training, signs off with a PIN, completes the quiz. Managers see who's trained and who's not.</p>
+      </div>
+    </div>
+  </div>
+  <div class="slide" data-slide="4">
+    <h2 class="s5-heading">Your people deserve better<br>than a binder.</h2>
+    <p class="s5-sub">See the full demo or let's talk about your SOPs.</p>
+    <div class="cta-row">
+      <a href="/demo" class="cta-btn primary">See the full demo</a>
+      <a href="https://calendly.com/contact-sopsnobodyreads/15min" target="_blank" class="cta-btn secondary">Book a discovery call</a>
+    </div>
+    <div class="s5-site">sopsnobodyreads.com</div>
+  </div>
+</div>
+<div class="tap-left" onclick="prevSlide()"></div>
+<div class="tap-right" onclick="nextSlide()"></div>
+<div class="nav-dots">
+  <button class="dot active" onclick="goTo(0)"></button>
+  <button class="dot" onclick="goTo(1)"></button>
+  <button class="dot" onclick="goTo(2)"></button>
+  <button class="dot" onclick="goTo(3)"></button>
+  <button class="dot" onclick="goTo(4)"></button>
+</div>
+<div class="offline-badge" id="netBadge"></div>
+<script>
+let current = 0;
+const total = 5;
+const slides = document.querySelectorAll('.slide');
+const dots = document.querySelectorAll('.dot');
+function goTo(n) {
+  if (n < 0 || n >= total || n === current) return;
+  slides[current].classList.remove('active');
+  slides[current].classList.add('exiting');
+  const prev = current;
+  current = n;
+  slides[current].style.transform = n > prev ? 'translateX(40px)' : 'translateX(-40px)';
+  requestAnimationFrame(() => { slides[current].classList.add('active'); });
+  dots.forEach((d, i) => d.classList.toggle('active', i === current));
+  setTimeout(() => { slides[prev].classList.remove('exiting'); }, 500);
+}
+function nextSlide() { goTo(current + 1); }
+function prevSlide() { goTo(current - 1); }
+let touchStartX = 0;
+document.addEventListener('touchstart', e => { touchStartX = e.touches[0].clientX; }, { passive: true });
+document.addEventListener('touchend', e => {
+  const diff = touchStartX - e.changedTouches[0].clientX;
+  if (Math.abs(diff) > 50) { diff > 0 ? nextSlide() : prevSlide(); }
+}, { passive: true });
+document.addEventListener('keydown', e => {
+  if (e.key === 'ArrowRight' || e.key === ' ') nextSlide();
+  if (e.key === 'ArrowLeft') prevSlide();
+});
+const badge = document.getElementById('netBadge');
+function updateNet() {
+  badge.className = 'offline-badge ' + (navigator.onLine ? 'online' : 'offline');
+  badge.textContent = navigator.onLine ? 'online' : 'offline';
+}
+window.addEventListener('online', updateNet);
+window.addEventListener('offline', updateNet);
+updateNet();
+</script>
+</body>
+</html>

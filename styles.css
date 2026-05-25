@@ -338,21 +338,24 @@ figcaption {
   margin: 2.5rem 0 0;
 }
 
-.scene .prose {
-  max-width: var(--measure);
+.scene .prose,
+.section .prose {
   font-size: 1.125rem;
   line-height: 1.6;
 }
 
 /* Narration: each beat sits on its own line, with breathing room */
-.scene .prose p + p { margin-top: 1.4em; }
+.scene .prose p + p,
+.section .prose p + p { margin-top: 1.4em; }
 
-/* Short centered hairline between scenes — like the footer rule, but narrow */
+/* Half-page hairline divider between consecutive sections and scenes */
 .scene + .scene::before,
-.scene + .closing::before {
+.scene + .closing::before,
+.hero + .section::before,
+.section + .section::before {
   content: '';
   display: block;
-  width: 4rem;
+  width: 50%;
   height: 1px;
   background: var(--rule);
   margin: 0 auto 2.5rem;
@@ -389,7 +392,8 @@ figcaption {
   .scene { padding: 1.75rem 0; }
   .closing { padding: 2.5rem 0 1rem; }
 
-  .scene .prose { font-size: 1.0625rem; }
+  .scene .prose,
+  .section .prose { font-size: 1.0625rem; }
 
   .site-footer { padding: 2rem 0 2.5rem; margin-top: 2rem; }
 }

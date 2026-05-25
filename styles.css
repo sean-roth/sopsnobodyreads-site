@@ -231,6 +231,10 @@ a:hover { text-decoration-thickness: 2px; }
   max-width: var(--measure);
 }
 
+.prose p {
+  text-wrap: pretty;
+}
+
 .prose p + p { margin-top: 1em; }
 
 /* ---- Figure / image placeholders ---- */

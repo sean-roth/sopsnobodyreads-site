@@ -97,6 +97,7 @@ a:hover { text-decoration-thickness: 2px; }
 /* ---- Nav ---- */
 .nav {
   padding: 1.25rem 0;
+  border-bottom: 1px solid var(--rule);
 }
 
 .nav-inner {
@@ -199,7 +200,7 @@ a:hover { text-decoration-thickness: 2px; }
 
 /* ---- Hero (homepage) ---- */
 .hero {
-  padding: 4rem 0 2rem;
+  padding: 2.5rem 0 2rem;
 }
 
 .hero h1 {
@@ -306,7 +307,7 @@ figcaption {
 
 /* ---- Segment-page specifics ---- */
 .segment-hero {
-  padding: 4rem 0 3rem;
+  padding: 2.5rem 0 3rem;
 }
 
 .segment-hero h1 {
@@ -334,13 +335,27 @@ figcaption {
 }
 
 .scene .figure {
-  margin: 0 0 1.75rem;
+  margin: 2.5rem 0 0;
 }
 
 .scene .prose {
   max-width: var(--measure);
   font-size: 1.125rem;
   line-height: 1.6;
+}
+
+/* Narration: each beat sits on its own line, with breathing room */
+.scene .prose p + p { margin-top: 1.4em; }
+
+/* Short centered hairline between scenes — like the footer rule, but narrow */
+.scene + .scene::before,
+.scene + .closing::before {
+  content: '';
+  display: block;
+  width: 4rem;
+  height: 1px;
+  background: var(--rule);
+  margin: 0 auto 2.5rem;
 }
 
 .closing {

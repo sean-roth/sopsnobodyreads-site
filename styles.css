@@ -243,6 +243,13 @@ a:hover { text-decoration-thickness: 2px; }
   max-width: var(--measure);
 }
 
+.figure img {
+  display: block;
+  width: 100%;
+  height: auto;
+  filter: drop-shadow(0 2px 12px rgba(31, 58, 46, 0.08));
+}
+
 .section .figure {
   margin-top: 2.5rem;
 }

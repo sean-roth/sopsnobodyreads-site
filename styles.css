@@ -43,6 +43,7 @@ body {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+  overflow-x: hidden;
 }
 
 main { flex: 1; }
@@ -388,7 +389,7 @@ figcaption {
 /* ---- Mobile ---- */
 @media (max-width: 640px) {
   :root {
-    --gutter: 1.25rem;
+    --gutter: 1.5rem;
   }
 
   body { font-size: 1rem; }
